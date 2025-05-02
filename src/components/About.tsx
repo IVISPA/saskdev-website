@@ -37,7 +37,7 @@ export default function About() {
           </h2>
           <p className="text-gray-400 text-lg mb-4">
             At <span className="text-calypso font-medium">SaskDev</span>, we empower businesses through
-            custom software, DevOps automation, and infrastructure-as-code. We're dedicated to building
+            custom software, DevOps automation, and infrastructure-as-code. We&#39;re dedicated to building
             scalable, secure, and elegant solutions — from concept to deployment.
           </p>
           <p className="text-gray-400 text-base">

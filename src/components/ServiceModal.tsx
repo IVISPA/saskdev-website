@@ -20,11 +20,11 @@ interface Props {
   onClose: () => void;
 }
 
-const animationMap: Record<string, any> = {
+const animationMap: Record<string, object> = {
   custom: codingAnimation,
   devops: rocketAnimation,
   infra: cloudAnimation,
-  startup: startupAnimation, // ✅ Mapeado correctamente
+  startup: startupAnimation,
 };
 
 export default function ServiceModal({ service, onClose }: Props) {
