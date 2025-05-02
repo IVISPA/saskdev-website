@@ -6,26 +6,29 @@ import { Volume2, VolumeX } from 'lucide-react';
 
 export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = false;
-      video.volume = 1;
-      video.play().catch(() => {
+    if (typeof window !== 'undefined') {
+      const video = videoRef.current;
+      if (video) {
         video.muted = true;
-        setMuted(true);
-      });
+        video.play().catch(() => {
+          video.muted = true;
+          setMuted(true);
+        });
+      }
     }
   }, []);
 
   const toggleMute = () => {
-    const video = videoRef.current;
-    if (video) {
-      video.muted = !video.muted;
-      setMuted(video.muted);
-      video.play();
+    if (typeof window !== 'undefined') {
+      const video = videoRef.current;
+      if (video) {
+        video.muted = !video.muted;
+        setMuted(video.muted);
+        video.play();
+      }
     }
   };
 

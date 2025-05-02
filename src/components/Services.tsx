@@ -9,7 +9,33 @@ import rocketAnimation from '@/lotties/rocket.json';
 import cloudAnimation from '@/lotties/cloud.json';
 import startupAnimation from '@/lotties/startup.json';
 
-const services = [
+interface LottieAnimationData {
+  v: string;
+  fr: number;
+  ip: number;
+  op: number;
+  w: number;
+  h: number;
+  nm: string;
+  ddd: number;
+  assets: unknown[];
+  layers: unknown[];
+  markers: unknown[];
+}
+
+interface Service {
+  id: string;
+  animation: LottieAnimationData;
+  title: string;
+  desc: string;
+  details: string;
+}
+
+interface ServicesProps {
+  onCardClick?: (serviceId: "devops" | "infra" | "software") => void;
+}
+
+const services: Service[] = [
   {
     id: 'custom',
     animation: codingAnimation,
@@ -44,8 +70,16 @@ const services = [
   },
 ];
 
-export default function Services() {
-  const [selected, setSelected] = useState(null);
+export default function Services({ onCardClick }: ServicesProps) {
+  const [selected, setSelected] = useState<Service | null>(null);
+
+  const handleServiceClick = (service: Service) => {
+    if (onCardClick) {
+      onCardClick(service.id as "devops" | "infra" | "software");
+    } else {
+      setSelected(service);
+    }
+  };
 
   return (
     <section id="services" className="bg-black py-20 px-4 text-white">
@@ -62,7 +96,7 @@ export default function Services() {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              onClick={() => setSelected(service)}
+              onClick={() => handleServiceClick(service)}
               className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 cursor-pointer transition-all"
               whileHover={{
                 scale: 1.05,

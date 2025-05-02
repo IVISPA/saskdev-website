@@ -54,7 +54,7 @@ const plans = [
 export default function Plans() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>('starter');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const planObject = plans.find((p) => p.id === selectedPlan);
+  const planObject = selectedPlan ? plans.find((p) => p.id === selectedPlan) || null : null;
 
   return (
     <section id="plans" className="bg-gray-900 py-20 px-4 text-white relative z-0">

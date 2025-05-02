@@ -1,16 +1,17 @@
-import Hero from '@/components/Hero';
-import Services from '@/components/Services';
-import Plans from '@/components/Plans';
-import Contact from '@/components/Contact';
-import About from '@/components/About';
+'use client';
+
+import dynamic from 'next/dynamic';
+
+// Dynamically import all components
+const Hero = dynamic(() => import('@/components/Hero'), { ssr: false });
+const Contact = dynamic(() => import('@/components/Contact'), { ssr: false });
+const ClientWrapper = dynamic(() => import('@/components/ClientWrapper'), { ssr: false });
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <About />
-      <Services />
-      <Plans />
+      <ClientWrapper />
       <Contact />
     </main>
   );
