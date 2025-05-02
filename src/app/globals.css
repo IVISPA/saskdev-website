@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-gray-900 text-white;
+}
+
+/* Custom Scrollbar - Calypso + Hover */
+::-webkit-scrollbar {
+  width: 8px;
+  transition: width 0.3s ease;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #5eead4; /* Calypso */
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #2dd4bf; /* Calypso más intenso (tailwind: teal-400) */
+  width: 10px;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #5eead4 transparent;
 }
